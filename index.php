@@ -9,8 +9,8 @@ $nb_systems = $server_config['num_of_systems']+1;
 
 
 if (!(isset ( $pub_sub_action ) && file_exists('mod/recycleurs/'. $pub_sub_action.'.php' )))
-{ 
-	$pub_sub_action = 'index';
+{
+	$pub_sub_action  = 'index';
 }
 
 ?>
@@ -22,7 +22,7 @@ if (!(isset ( $pub_sub_action ) && file_exists('mod/recycleurs/'. $pub_sub_actio
 		<tr align='center'>
 <?php
 
-if ( $pub_subaction != 'recycleurs' )
+if ( $pub_sub_action != 'recycleurs' )
 	{
 		echo "\t\t\t"."<td class='c' width='150' onclick=\"window.location = 'index.php?action=recycleurs&sub_action=recycleurs';\">";
 		echo "<a style='cursor: pointer'><font color:'lime'>Recycleurs</font></a>";
@@ -35,7 +35,7 @@ else
 		echo "</th>";
 	}
 	
-if ( $pub_subaction != 'phalanges' )
+if ( $pub_sub_action != 'phalanges' )
 	{
 		echo "\t\t\t"."<td class='c' width='150' onclick=\"window.location = 'index.php?action=recycleurs&sub_action=phalanges';\">";
 		echo "<a style='cursor: pointer'><font color:'lime'>Phalanges</font></a>";
@@ -50,7 +50,7 @@ else
 	
 if ( $user_data['user_admin'] == 1 || $user_data['user_coadmin'] == 1 )
 	{
-		if ( $pub_subaction != 'admin' )
+		if ( $pub_sub_action != 'admin' )
 			{
 				echo "\t\t\t"."<td class='c' width='150' onclick=\"window.location = 'index.php?action=recycleurs&sub_action=admin';\">";
 				echo "<a style='cursor: pointer'><font color:'lime'>Administration</font></a>";
@@ -63,7 +63,7 @@ if ( $user_data['user_admin'] == 1 || $user_data['user_coadmin'] == 1 )
 				echo "</th>";
 			}
    }
-if ( $pub_subaction != 'version' )
+if ( $pub_sub_action != 'version' )
 	{
 		echo "\t\t\t"."<td class='c' width='150' onclick=\"window.location = 'index.php?action=recycleurs&sub_action=version';\">";
 		echo"<a style='cursor: pointer'><font color:'lime'>Version et Info</font></a>";

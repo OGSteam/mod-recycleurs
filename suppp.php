@@ -16,12 +16,12 @@ define("TABLE_PHALANGES", $table_prefix."phalanges");
 
 
 
-// On commence par récupérer les champs
+// On commence par rÃ©cupÃ©rer les champs
 if(isset($pub_id)) $id=$pub_id;
 else $id="";
 
 
-// on écrit la requête sql
+// on Ã©crit la requÃªte sql
     $query = "DELETE from " .TABLE_PHALANGES. " where id=$id";
    
     //insertion formulaire table

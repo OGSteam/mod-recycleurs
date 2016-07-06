@@ -19,10 +19,10 @@ die("Hacking attempt");
 			
 				<td align="center" class="c" colspan="4">Formulaire d'envoi des recycleurs</td> 
 			<tr> 
-				<th align="center">Coordonnées :</th> 
+				<th align="center">CoordonnÃ©es :</th> 
 				<th align="center">
 				<i>Galaxie :</i> &nbsp; <input type="text" name="galaxie" maxlength="1" size="5"><br>  
-				<i>Système :</i> &nbsp; <input type="text" name="systeme" maxlength="3" size="5"><br> 
+				<i>SystÃ¨me :</i> &nbsp; <input type="text" name="systeme" maxlength="3" size="5"><br> 
 				<i>Position :</i> &nbsp; <input type="text" name="position" maxlength="2" size="5"><br></th> 
 				<th align="center">Porte : </th>
 				<th align="center">
@@ -46,7 +46,7 @@ for ( $i = 1; $i < $nb_galaxies; $i++) {
 	<table border="2" width="90%">
 	<b><td colspan="6"><font size="5" color="#FFFFFF"><A name='.$i.'>G'.$i.'</A></font></b></tr>
 	<tr>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Coordonnées</b></font></td>
+	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>CoordonnÃ©es</b></font></td>
 	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Noms</b></font></td>
 	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Nombres</b></font></td>
 	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>MAJ</b></font></td>

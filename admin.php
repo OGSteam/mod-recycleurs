@@ -11,7 +11,7 @@ if ($user_data["user_admin"] != 1 && $user_data["user_coadmin"] != 1) {
 	<table  align="center"><tr><td> 
 		<table width="200" style="border:2px #003399 solid;" cellpadding="3"> 
 			
-				<td align="center" class="c" colspan="2">Remise à Zéro des tables</td><tr>			
+				<td align="center" class="c" colspan="2">Remise Ã  ZÃ©ro des tables</td><tr>			
 <th align="center">
 Oui:<INPUT type="radio" name="raz" value="Oui"><br>
 </tr>

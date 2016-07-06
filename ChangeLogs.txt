@@ -7,12 +7,12 @@
 
 1.0a
 - Modification des apparences (tableau + formulaire)
-- Le formulaire n'a plus besoin d'être remplit avec le nom ig, celui de l'ogspy est inséré autamatiquement
-- Ajout de la date à laquel l'envoie a été fait
-- Modification du numéro de version ( ce sont les bons cette fois ci :p)
+- Le formulaire n'a plus besoin d'Ãªtre remplit avec le nom ig, celui de l'ogspy est insÃ©rÃ© autamatiquement
+- Ajout de la date Ã  laquel l'envoie a Ã©tÃ© fait
+- Modification du numÃ©ro de version ( ce sont les bons cette fois ci :p)
 - Modification du fichier install : ATTENTION nouvelles tables smile
 - Ajout fichier uninstall.php
-- Petite modification bénine smile
+- Petite modification bÃ©nine smile
 
 1.0
 - Version initiale

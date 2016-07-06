@@ -18,12 +18,12 @@ $query = "SELECT `active` FROM `".TABLE_MOD."` WHERE `action`='recycleurs' AND `
 if (!$db->sql_numrows($db->sql_query($query))) die("Hacking attempt");
 
 
-// On commence par récupérer les champs
+// On commence par rÃ©cupÃ©rer les champs
 if(isset($pub_id)) $id=$pub_id;
 else $id="";
 
 
-// on écrit la requête sql
+// on Ã©crit la requÃªte sql
     $query = "DELETE from " .TABLE_RECYCLEURS. " where id=$id";
    
     //insertion formulaire table
