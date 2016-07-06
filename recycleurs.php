@@ -31,8 +31,8 @@ if (!defined('IN_SPYOGAME')) {
                                                                     size="5"><br></th>
                                 <th align="center">Porte :</th>
                                 <th align="center">
-                                    Oui:<INPUT type="radio" name="porte" value="P"><br>
-                                    Non:<INPUT type="radio" name="porte" value="">
+                                    Oui:<input type="radio" name="porte" value="P"><br>
+                                    Non:<input type="radio" name="porte" value="">
                             </tr>
                             <tr>
                                 <th align="center">Nombres de recycleurs :</th>
@@ -52,13 +52,13 @@ if (!defined('IN_SPYOGAME')) {
 for ($i = 1; $i < $nb_galaxies; $i++) {
     echo '<center>
 	<table border="2" width="90%">
-	<b><td colspan="6"><font size="5" color="#FFFFFF"><A name=' . $i . '>G' . $i . '</A></font></b></tr>
+	<b><td colspan="6"><span  style="font-size: large; color: #FFFFFF; "><a name=' . $i . '>G' . $i . '</a></span></b></tr>
 	<tr>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Coordonnées</b></font></td>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Noms</b></font></td>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Nombres</b></font></td>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>MAJ</b></font></td>
-	<td width="15%" align="center"><font color="#FFFFFF" size="4"><b>Options</b></font></td>
+	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Coordonnées</b></span></td>
+	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Noms</b></span></td>
+	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Nombres</b></span></td>
+	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>MAJ</b></span></td>
+	<td width="15%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Options</b></span></td>
 	</tr>
 	<tr>';
     $req = "SELECT * FROM " . $table_prefix . "recycleurs WHERE galaxie=" . $i . " ORDER BY systeme ASC";
