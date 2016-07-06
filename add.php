@@ -12,7 +12,7 @@ global $db;
 global $table_prefix;
 define("TABLE_RECYCLEURS", $table_prefix."recycleurs");
 
-// On commence par récupérer les champs
+// On commence par rÃ©cupÃ©rer les champs
 if(isset($pub_galaxie)) $galaxie=$pub_galaxie;
 else $galaxie="";
 
@@ -49,7 +49,7 @@ else $nombrerecy="";
 
 
 
-// on écrit la requête sql
+// on Ã©crit la requÃªte sql
 $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '$galaxie', '$systeme', '$position', '$porte', '$nombrerecy', " . time() . ")";
 log_('mod',$query);
 $db->sql_query($query);

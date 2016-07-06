@@ -17,7 +17,7 @@ define("TABLE_recycleurs", $table_prefix."recycleurs");
 
 
 
-// On commence par récupérer les champs
+// On commence par rÃ©cupÃ©rer les champs
 if(isset($pub_raz)) $raz=$pub_raz;
 else $raz="";
 

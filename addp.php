@@ -12,7 +12,7 @@ global $db;
 global $table_prefix;
 define("TABLE_PHALANGES", $table_prefix."phalanges");
 
-// On commence par récupérer les champs
+// On commence par rÃ©cupÃ©rer les champs
 if(isset($pub_galaxie)) $galaxie=$pub_galaxie;
 else $galaxie="";
 
@@ -58,7 +58,7 @@ $systemep = $nb_systems;
 }
 
 
-// on écrit la requête sql
+// on Ã©crit la requÃªte sql
 $query = "INSERT INTO " . TABLE_PHALANGES . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '$galaxie', '$systeme', '$position', '$systemea', '$systemep', " . time() . ")";
  $db->sql_query($query);
  	
