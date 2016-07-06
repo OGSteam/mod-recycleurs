@@ -53,5 +53,3 @@ $query = "INSERT INTO " . TABLE_PHALANGES . "(`id` , `user_name` , `galaxie` , `
 $db->sql_query($query);
 
 redirection("index.php?action=recycleurs&sub_action=phalanges");
-
-?> 

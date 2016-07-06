@@ -45,5 +45,3 @@ log_('mod', $query);
 $db->sql_query($query);
 
 redirection("index.php?action=recycleurs&sub_action=recycleurs");
-
-?> 
