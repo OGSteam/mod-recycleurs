@@ -49,41 +49,44 @@ if (!defined('IN_SPYOGAME')) {
         </form>
     </div>
 <?php
-for ($i = 1; $i < $nb_galaxies; $i++) {
-    echo '<center>
+echo '<br><br>';
+echo '<center>
 	<table border="2" width="90%">
-	<b><td colspan="6"><span  style="font-size: large; color: #FFFFFF; "><a name=' . $i . '>G' . $i . '</a></span></b></tr>
-	<tr>
-	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Coordonnées</b></span></td>
-	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Noms</b></span></td>
-	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Nombres</b></span></td>
-	<td width="20%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>MAJ</b></span></td>
-	<td width="15%" align="center"><span  style="color: #FFFFFF; font-size: medium; "><b>Options</b></span></td>
-	</tr>
-	<tr>';
+	<tr >
+	<td width="20%" align="center" class="c"><span  style="color: #FFFFFF; font-size: medium; "><b>Coordonnées</b></span></td>
+	<td width="20%" align="center" class="c"><span  style="color: #FFFFFF; font-size: medium; "><b>Noms</b></span></td>
+	<td width="20%" align="center" class="c"><span  style="color: #FFFFFF; font-size: medium; "><b>Nombre Recycleurs (Avec PdS ?)</b></span></td>
+	<td width="20%" align="center" class="c"><span  style="color: #FFFFFF; font-size: medium; "><b>MAJ</b></span></td>
+	<td width="15%" align="center" class="c"><span  style="color: #FFFFFF; font-size: medium; "><b>Options</b></span></td>
+	</tr>';
+for ($i = 1; $i < $nb_galaxies; $i++) {
+
+    echo '<b><td colspan="6" class="c"><span  style="font-size: large; color: #FFFFFF; "><a name=' . $i . '>G' . $i . '</a></span></b></tr>';
+
+	echo '<tr>';
     $req = "SELECT * FROM " . $table_prefix . "recycleurs WHERE galaxie=" . $i . " ORDER BY systeme ASC";
     $result = $db->sql_query($req);
     while ($rows = $db->sql_fetch_assoc($result)) {
-        echo '<td width="20%" align="center"><b>' . $rows['galaxie'] . ':' . $rows['systeme'] . ':' . $rows['position'] . '</b></td>';
-        echo '<td width="20%" align="center"><b>' . $rows['user_name'] . '</b></td>';
-        echo '<td width="20%" align="center"><b>' . $rows['nombrerecy'] . '&nbsp;&nbsp;&nbsp; <font color="#FF0000"><b> ' . $rows['porte'] . ' </b></font><b/></td>';
+        echo '<th width="20%" align="center"><b>' . $rows['galaxie'] . ':' . $rows['systeme'] . ':' . $rows['position'] . '</b></th>';
+        echo '<th width="20%" align="center"><b>' . $rows['user_name'] . '</b></th>';
+        echo '<th width="20%" align="center"><b>' . $rows['nombrerecy'] . '&nbsp;&nbsp;&nbsp; <font color="#FF0000"><b> ' . $rows['porte'] . ' </b></font><b/></th>';
         $time = $rows["time"];
         $time = strftime("%d %b %Y", $time);
-        echo '<td width="20%" align="center"><b>' . $time . '</b></td>';
+        echo '<th width="20%" align="center"><b>' . $time . '</b></th>';
         if ($rows['user_name'] == $user_data['user_name'] || $user_data["user_admin"] == 1 || $user_data["user_coadmin"] == 1) {
-            echo '<td width="15%" align="center"><form method="POST" action="index.php?action=recycleurs&sub_action=supp">
+            echo '<th width="15%" align="center"><form method="POST" action="index.php?action=recycleurs&sub_action=supp">
 			<input type="hidden" name="sub_action" value="supp">
 			<input type="hidden" value="suppression" name="suppression">
 			<input type="hidden" value=' . $rows['id'] . ' name="id">
 			<input type="submit" value="Supprimer" name="supprimer">
 			</form>
-			</tr></td>';
+			</tr></th>';
         } else {
             echo '<td></tr></td>';
         }
     }
-    echo '</tr></table><br><br>';
-}
 
+}
+echo '</table><br><br>';
 
 ?>
