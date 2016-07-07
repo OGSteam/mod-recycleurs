@@ -43,23 +43,27 @@ if (!defined('IN_SPYOGAME')) {
             </table>
         </form>
     </div>
+    <div style="text-align: center;">
+        <table border="2" width="90%">
+            <tr>
+                <td width="20%" align="center" class="c"><span style="color: #FFFFFF; font-size: medium; "><b>Coordonnées</b></span></td>
+                <td width="20%" align="center" class="c"><span style="color: #FFFFFF; font-size: medium; "><b>De</b></span></td>
+                <td width="20%" align="center" class="c"><span style="color: #FFFFFF; font-size: medium; "><b>A</b></span></td>
+                <td width="20%" align="center" class="c"><span style="color: #FFFFFF; font-size: medium; "><b>MAJ</b></span></td>
+                <td width="15%" align="center" class="c"><span style="color: #FFFFFF; font-size: medium; "><b>Noms</b></span></td>
+                <td width="15%" align="center" class="c"><span style="color: #FFFFFF; font-size: medium; "><b>Options</b></span></td>
+            </tr>
 <?php
+
+
 for ($i = 1; $i < $nb_galaxies; $i++) {
-    echo '<center>
-	<table border="2" width="90%">
-	<b><td colspan="6"><font size="5" color="#FFFFFF"><A name=' . $i . '>G' . $i . '</A></font></b></tr>
-	<tr>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>Coordonnées</b></font></td>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>De</b></font></td>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>A</b></font></td>
-	<td width="20%" align="center"><font color="#FFFFFF" size="4"><b>MAJ</b></font></td>
-	<td width="15%" align="center"><font color="#FFFFFF" size="4"><b>Noms</b></font></td>
-	<td width="15%" align="center"><font color="#FFFFFF" size="4"><b>Options</b></font></td>
-	</tr>
-	<tr>';
+
+    echo '<tr><b><td colspan="6" style="font-size: large; color: #FFFFFF; text-align: left"><a name=' . $i . '>G' . $i . '</a></td></b></tr>';
+
     $req = "SELECT * FROM " . $table_prefix . "phalanges WHERE galaxie=" . $i . " ORDER BY systeme ASC";
     $result = $db->sql_query($req);
     while ($rows = $db->sql_fetch_assoc($result)) {
+        echo '<tr>';
         echo '<td width="20%" align="center"><b>' . $rows['galaxie'] . ':' . $rows['systeme'] . ':' . $rows['position'] . '</b></td>';
         echo '<td width="20%" align="center"><b>' . $rows['galaxie'] . ':' . $rows['systemep'] . '</b></td>';
         echo '<td width="20%" align="center"><b>' . $rows['galaxie'] . ':' . $rows['systemea'] . '</b></td>';
@@ -74,13 +78,13 @@ for ($i = 1; $i < $nb_galaxies; $i++) {
 			<input type="hidden" value=' . $rows['id'] . ' name="id">
 			<input type="submit" value="Supprimer" name="supprimer">
 			</form>
-			</tr></td>';
+			</td></tr>';
         } else {
-            echo '<td></tr></td>';
+            echo '<td></td></tr>';
         }
     }
-    echo '</tr></table><br><br>';
-}
 
+}
+echo '</table></div><br><br>';
 
 ?>
