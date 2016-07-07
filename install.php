@@ -60,7 +60,7 @@ if ($is_ok == true) {
     $result = $db->sql_query($query);
     $mod_id = $db->sql_fetch_row($result);
     $mod_id = $mod_id[0];
-    log_('debug',$mod_id);
+
 // On regarde si la table xtense_callbacks existe :
     $result = $db->sql_query('SHOW tables LIKE "' . TABLE_XTENSE_CALLBACKS . '"');
     if ($db->sql_numrows($result) != 0) {
