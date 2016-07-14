@@ -66,17 +66,21 @@ function recycleurs_import($data)
 
     $isMoon = $data['planet_type'];
     $planet_name = $data['planet_name'];
-
+    $coordinates = $player_galaxy.":".$player_system.":".$player_position;
     $nb_recycleurs = $data['fleet']['REC'];
 
     if($nb_recycleurs > 0){
 
+        //On vérifie si il y a une porte de saut à proximité (La porte n'est dispo que sur les lunes)
+        $request = "SELECT `planet_name` FROM ".TABLE_USER_BUILDING." WHERE  `PoSa` = '1' AND `coordinates` = ".$coordinates;
+        $posa = $db->sql_numrows($request);
+
         $request="SELECT `galaxie` , `systeme` , `position`, `nombrerecy` from ".TABLE_RECYCLEURS." WHERE `galaxie`=".$player_galaxy." AND systeme=".$player_system." AND position='".$player_position."'";
 
         if($db->sql_numrows($db->sql_query($request)) != 0)
-            $query = "UPDATE ".TABLE_RECYCLEURS." SET `porte`= '0', `nombrerecy`= '".$nb_recycleurs."', `time` = '".$date."' WHERE `galaxie`= '".$player_galaxy."' AND `systeme`='".$player_system."' AND `position` = '".$player_position."'";
+            $query = "UPDATE ".TABLE_RECYCLEURS." SET `porte`= '".$posa."', `nombrerecy`= '".$nb_recycleurs."', `time` = '".$date."' WHERE `galaxie`= '".$player_galaxy."' AND `systeme`='".$player_system."' AND `position` = '".$player_position."'";
         else
-            $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '".$player_galaxy."', '".$player_system."', '".$player_position."', '0', '".$nb_recycleurs."', '" . $date . "')";
+            $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '".$player_galaxy."', '".$player_system."', '".$player_position."', '".$posa."', '".$nb_recycleurs."', '" . $date . "')";
 
 
         $db->sql_query($query);
