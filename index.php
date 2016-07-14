@@ -2,12 +2,15 @@
 if (!defined('IN_SPYOGAME')) die ('Hacking attempt');
 include_once("views/page_header.php");
 
+require_once("mod/recycleurs/core/recyclers.php");
+require_once("mod/recycleurs/core/phalanx.php");
+
 // config OGSpy
 $nb_galaxies = $server_config['num_of_galaxies'] + 1;
 $nb_systems = $server_config['num_of_systems'] + 1;
 
 
-if (!(isset ($pub_sub_action) && file_exists('mod/recycleurs/' . $pub_sub_action . '.php'))) {
+if (!isset ($pub_sub_action)) {
     $pub_sub_action = 'index';
 }
 
@@ -88,19 +91,20 @@ if (!(isset ($pub_sub_action) && file_exists('mod/recycleurs/' . $pub_sub_action
                         break;
 
                     case "add":
-                        require_once("add.php");
+                        log_('debug',"add_recyclers(".$pub_galaxie.", ".$pub_systeme.", ".$pub_position.", ".$pub_porte." ,".$pub_nombrerecy." )");
+                        add_recyclers($pub_galaxie, $pub_systeme, $pub_position, $pub_porte ,$pub_nombrerecy);
                         break;
 
                     case "addp":
-                        require_once("addp.php");
+                        add_phalanx($pub_galaxie, $pub_systeme, $pub_position, $pub_niv);
                         break;
 
                     case "supp":
-                        require_once("supp.php");
+                        del_recyclers($pub_id);
                         break;
 
                     case "suppp":
-                        require_once("suppp.php");
+                        del_phalanx($pub_id);
                         break;
 
                     default:
