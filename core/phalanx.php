@@ -8,7 +8,7 @@
 
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
-function add_phalanx($galaxie = "", $system = "", $position = "", $level = "")
+function add_phalanx($galaxie = "", $system = "", $position = "", $level = "", $xtense = false)
 {
     global $db, $table_prefix, $user_data, $server_config;
     define("TABLE_PHALANGES", $table_prefix . "phalanges");
@@ -31,11 +31,17 @@ function add_phalanx($galaxie = "", $system = "", $position = "", $level = "")
         $arrondi_type = 2;
     };
 
-// on écrit la requête sql
-    $query = "INSERT INTO " . TABLE_PHALANGES . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '".$galaxie."', '".$system."', '".$position."', '".$system_higher_range."', '".$system_lower_range."', " . time() . ")";
-    $db->sql_query($query);
+    $request="SELECT * from ".TABLE_PHALANGES." WHERE `galaxie`=".$galaxie." AND systeme=".$system." AND position='".$position."'";
 
-    redirection("index.php?action=recycleurs&sub_action=phalanges");
+    if($db->sql_numrows($db->sql_query($request)) != 0)
+        $query = "UPDATE ".TABLE_PHALANGES." SET `systemea`= '".$system_higher_range."', `systemep`= '".$system_lower_range."', `time` = '".time()."' WHERE `galaxie`= '".$galaxie."' AND `systeme`='".$system."' AND `position` = '".$position."'";
+    else
+        $query = "INSERT INTO " . TABLE_PHALANGES . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '".$galaxie."', '".$system."', '".$position."', '".$system_higher_range."', '".$system_lower_range."', " . time() . ")";
+
+    $db->sql_query($query);
+    
+    if($xtense != true)
+        redirection("index.php?action=recycleurs&sub_action=phalanges");
 
 }
 
