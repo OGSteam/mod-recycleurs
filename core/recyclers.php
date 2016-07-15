@@ -8,8 +8,7 @@
 
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
-
-function add_recyclers($galaxie = "", $system = "", $position = "", $gate = "", $nb_recyclers = "")
+function add_recyclers($galaxie = "", $system = "", $position = "", $gate = "", $nb_recyclers = "", $xtense = false)
 {
     global $db, $table_prefix, $user_data, $server_config;
 
@@ -35,11 +34,17 @@ function add_recyclers($galaxie = "", $system = "", $position = "", $gate = "", 
         $position = "15";
 
 // on écrit la requête sql
-    $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '$galaxie', '$system', '$position', '$gate', '$nb_recyclers', " . time() . ")";
-    //log_('mod', $query);
+
+    $request="SELECT * from ".TABLE_RECYCLEURS." WHERE `galaxie`=".$galaxie." AND systeme=".$system." AND position='".$position."'";
+
+    if($db->sql_numrows($db->sql_query($request)) != 0)
+        $query = "UPDATE ".TABLE_RECYCLEURS." SET `nombrerecy`= '".$nb_recyclers."', `porte`= '".$gate."', `time` = '".time()."' WHERE `galaxie`= '".$galaxie."' AND `systeme`='".$system."' AND `position` = '".$position."'";
+    else
+        $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '$galaxie', '$system', '$position', '$gate', '$nb_recyclers', " . time() . ")";
     $db->sql_query($query);
 
-    redirection("index.php?action=recycleurs&sub_action=recycleurs");
+    if($xtense != true)
+        redirection("index.php?action=recycleurs&sub_action=recycleurs");
 
 }
 
