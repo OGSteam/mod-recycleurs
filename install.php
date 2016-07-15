@@ -70,7 +70,12 @@ if ($is_ok == true) {
 
         // S'il n'y est pas : alors on l'ajoute !
 
-        if ($nresult == 0) $db->sql_query("INSERT INTO " . TABLE_XTENSE_CALLBACKS . " (mod_id, function, type, active) VALUES ('" . $mod_id . "', 'recycleurs_import', 'fleet', '1')");
+        if ($nresult == 0) {
+            $db->sql_query("INSERT INTO " . TABLE_XTENSE_CALLBACKS . " (mod_id, function, type, active) VALUES ('" . $mod_id . "', 'recycleurs_import', 'fleet', '1')");
+            $db->sql_query("INSERT INTO " . TABLE_XTENSE_CALLBACKS . " (mod_id, function, type, active) VALUES ('" . $mod_id . "', 'phalanx_import', 'buildings', '1')");
+        }
+
+
     }
 
 
