@@ -106,6 +106,10 @@ if (!isset ($pub_sub_action)) {
                     case "suppp":
                         del_phalanx($pub_id);
                         break;
+                    case "set_recy_limit";
+                        mod_set_option('recy_limit', $pub_low_limit);
+                        redirection("index.php?action=recycleurs&sub_action=admin");
+                        break;
 
                     default:
                         require_once("recycleurs.php");

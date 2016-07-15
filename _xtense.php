@@ -69,7 +69,10 @@ function recycleurs_import($data)
     $coordinates = $player_galaxy.":".$player_system.":".$player_position;
     $nb_recycleurs = $data['fleet']['REC'];
 
-    if($nb_recycleurs > 0){
+    $required_recy = mod_get_option('recy_limit');
+    if(mod_get_option('recy_limit') < 1) $required_recy = 1;
+
+    if($nb_recycleurs > $required_recy){
 
         //On vérifie si il y a une porte de saut à proximité (La porte n'est dispo que sur les lunes)
         $request = "SELECT `planet_name` FROM ".TABLE_USER_BUILDING." WHERE  `PoSa` = '1' AND `coordinates` = ".$coordinates;
