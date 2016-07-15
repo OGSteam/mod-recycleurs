@@ -5,6 +5,13 @@
 
                 <td align="center" class="c" colspan="4">Version</td>
                 <tr>
+                    <th align="center" width="50">- 1.3.0</th>
+                    <br></th>
+                    <th align="center">- Adaptation à OGSpy 3.3.1<br>
+                        - Récupération des informations depuis Xtense<br>
+                        - Amélioration de l'import des données<br>
+                </tr>
+                <tr>
                     <th align="center" width="50">- 1.0.0</th>
                     <br></th>
                     <th align="center">- Adaptation à OGSpy 3.0.7<br>
@@ -51,35 +58,3 @@
         </td>
     </tr>
 </table>
-
-<table align="center">
-    <tr>
-        <td>
-            <table width="450" style="border:2px #003399 solid;" cellpadding="3">
-
-                <td align="center" class="c" colspan="4">Info</td>
-                <tr>
-                    <th align="center">- Prochaine version</th>
-                    <br></th>
-                    <th align="center">La prochaine version sera une version surrement en relation avec xtense2 pour que
-                        les MAJ soient faitent automatiquement
-                        et affiche au moment present l'endroit et la disponibilités des recycleurs. Un test sera fait.
-                    </th>
-                </tr>
-                <tr>
-                    <th align="center">- Version 1.1</th>
-                    <br></th>
-                    <th align="center">- La version 1.1 sort enfin avec plein d'amélioration tant
-                        que sur le plan de la rapidité que sur celui de sa facilité.
-                        Les phalanges complétes les recycleurs pour aider aux MAJ.
-                        Info date du : 12/02/08
-                    </th>
-                </tr>
-                <tr>
-
-                    </th>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table> 
