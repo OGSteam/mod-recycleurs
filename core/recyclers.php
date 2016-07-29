@@ -61,3 +61,12 @@ function del_recyclers($id = "")
 
     redirection("index.php?action=recycleurs&subaction=recycleurs");
 }
+
+function reset_recyclers_table()
+{
+    global $db, $table_prefix;
+    define("TABLE_RECYCLEURS", $table_prefix . "recycleurs");
+
+    $query = "DELETE from " . TABLE_RECYCLEURS;
+    $db->sql_query($query);
+}

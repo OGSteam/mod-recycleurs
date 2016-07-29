@@ -19,7 +19,7 @@ if ($user_data["user_admin"] != 1 && $user_data["user_coadmin"] != 1) {
                             Nombre: <input type="text" name="low_limit" value="<?php echo mod_get_option('recy_limit');?>"><br>
                     </tr>
                     <th align="center" colspan="2">
-                        <input type="submit" value=" &nbsp; &nbsp; Envoi &nbsp; &nbsp; ">
+                        <input type="submit" value="Envoi">
                     </th>
                     </tr>
                 </table>
@@ -28,19 +28,17 @@ if ($user_data["user_admin"] != 1 && $user_data["user_coadmin"] != 1) {
     </table>
 </form>
 <br>
-<form method="POST" action="index.php?action=recycleurs&sub_action=razr">
+<form method="POST" action="index.php?action=recycleurs&sub_action=raz">
     <table align="center">
         <tr>
             <td>
                 <table width="200" style="border:2px #003399 solid;" cellpadding="3">
 
-                    <td align="center" class="c" colspan="2">Remise à Zéro des tables</td>
-                    <tr>
-                        <th align="center">
-                            Oui:<input type="radio" name="raz" value="Oui"><br>
+                    <td align="center" class="c" colspan="2">Remise à Zéro des tables ?</td>
                     </tr>
+                    <tr>
                     <th align="center" colspan="2">
-                        <input type="submit" value=" &nbsp; &nbsp; Envoi &nbsp; &nbsp; ">
+                        <input type="submit" value="Effacer">
                     </th>
                     </tr>
                 </table>

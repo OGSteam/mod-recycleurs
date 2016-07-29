@@ -1,9 +1,11 @@
 <?php
 if (!defined('IN_SPYOGAME')) die ('Hacking attempt');
-include_once("views/page_header.php");
+
+list($version, $root) = $db->sql_fetch_row($db->sql_query("SELECT version, root FROM " . TABLE_MOD . " WHERE action = 'recycleurs'"));
 
 require_once("mod/recycleurs/core/recyclers.php");
 require_once("mod/recycleurs/core/phalanx.php");
+require_once("mod/{$root}/lang/" . $ui_lang . "/lang_recycleurs.php");
 
 // config OGSpy
 $nb_galaxies = $server_config['num_of_galaxies'] + 1;
@@ -14,6 +16,7 @@ if (!isset ($pub_sub_action)) {
     $pub_sub_action = 'index';
 }
 
+include_once("views/page_header.php");
 ?>
 
     <table width="100%">
@@ -91,7 +94,6 @@ if (!isset ($pub_sub_action)) {
                         break;
 
                     case "add":
-                        log_('debug',"add_recyclers(".$pub_galaxie.", ".$pub_systeme.", ".$pub_position.", ".$pub_porte." ,".$pub_nombrerecy." )");
                         add_recyclers($pub_galaxie, $pub_systeme, $pub_position, $pub_porte ,$pub_nombrerecy);
                         break;
 
@@ -106,11 +108,16 @@ if (!isset ($pub_sub_action)) {
                     case "suppp":
                         del_phalanx($pub_id);
                         break;
+
                     case "set_recy_limit";
                         mod_set_option('recy_limit', $pub_low_limit);
                         redirection("index.php?action=recycleurs&sub_action=admin");
                         break;
-
+                    case "raz";
+                        reset_recyclers_table();
+                        reset_phalanx_table();
+                        redirection("index.php?action=recycleurs&sub_action=admin");
+                        break;
                     default:
                         require_once("recycleurs.php");
                         break;
@@ -121,7 +128,7 @@ if (!isset ($pub_sub_action)) {
     </table>
 
 <?php
-print '<hr width="325px">' . "\n";
-print '<p align="center">MOD Recycleurs & Phalanges | Version 1.2.0 | OGSteam</p>' . "\n";
+echo '<hr width="325px">' . "\n";
+echo '<p align="center">MOD Recycleurs & Phalanges | Version '.$version.' | OGSteam</p>' . "\n";
+
 include_once './views/page_tail.php';
-?>
