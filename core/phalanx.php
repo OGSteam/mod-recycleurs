@@ -54,5 +54,13 @@ function del_phalanx($id = ""){
     $db->sql_query($query);
     
     redirection("index.php?action=recycleurs&sub_action=phalanges");
+}
 
+function reset_phalanx_table()
+{
+    global $db, $table_prefix;
+    define("TABLE_PHALANGES", $table_prefix . "phalanges");
+
+    $query = "DELETE from " . TABLE_PHALANGES;
+    $db->sql_query($query);
 }
