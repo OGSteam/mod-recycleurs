@@ -15,6 +15,7 @@ global $db, $table_prefix;
 $is_ok = false;
 $mod_folder = "recycleurs";
 $is_ok = install_mod($mod_folder);
+mod_set_option('recy_limit', 10);
 if ($is_ok == true) {
     define("TABLE_RECYCLEURS", $table_prefix . "recycleurs");
     define("TABLE_PHALANGES", $table_prefix . "phalanges");
