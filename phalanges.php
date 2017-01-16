@@ -6,6 +6,9 @@
  *    created : 25/08/07
  *    modified    : 12/02/2008
  ***************************************************************************/
+
+namespace Ogsteam\Ogspy;
+
 if (!defined('IN_SPYOGAME')) {
     die("Hacking attempt");
 } ?>
