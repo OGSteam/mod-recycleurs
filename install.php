@@ -14,14 +14,16 @@ if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 global $db, $table_prefix;
 
-mod_set_option('recy_limit', 10);
+$mod_tools = new Mod_DevTools("recycleurs");
+
+$mod_tools->mod_set_option('recy_limit', 10);
 
 define("TABLE_RECYCLEURS", $table_prefix . "recycleurs");
 define("TABLE_PHALANGES", $table_prefix . "phalanges");
 define("TABLE_XTENSE_CALLBACKS", $table_prefix . "xtense_callbacks");
 
 
-mod_create_table(TABLE_RECYCLEURS ,"CREATE TABLE " . TABLE_RECYCLEURS . " (
+$mod_tools->mod_create_table(TABLE_RECYCLEURS ,"CREATE TABLE " . TABLE_RECYCLEURS . " (
 			`id` INT NOT NULL AUTO_INCREMENT ,
 			`user_name` VARCHAR( 255 ) NOT NULL default '0',
 			`galaxie` VARCHAR( 1 ) NOT NULL ,
@@ -32,7 +34,7 @@ mod_create_table(TABLE_RECYCLEURS ,"CREATE TABLE " . TABLE_RECYCLEURS . " (
 			`time` int(11) NOT NULL default '0',
 			PRIMARY KEY ( `id` )) ");
 
-mod_create_table(TABLE_RECYCLEURS, "CREATE TABLE " . TABLE_PHALANGES . " (
+$mod_tools->mod_create_table(TABLE_RECYCLEURS, "CREATE TABLE " . TABLE_PHALANGES . " (
 			`id` INT NOT NULL AUTO_INCREMENT ,
 			`user_name` VARCHAR( 255 ) NOT NULL default '0',
 			`galaxie` VARCHAR( 1 ) NOT NULL ,

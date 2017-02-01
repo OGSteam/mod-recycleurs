@@ -68,7 +68,9 @@ if (class_exists("Callback")) {
  */
 function recycleurs_import($data)
 {
-    global $user_data, $db, $table_prefix;
+    global $db;
+
+    $mod_tools = new Mod_DevTools('recycleurs');
 
     // données a traiter
     // timestamp actuel
@@ -82,8 +84,8 @@ function recycleurs_import($data)
     $coordinates = $player_galaxy . ":" . $player_system . ":" . $player_position;
     $nb_recycleurs = $data['fleet']['REC'];
 
-    $required_recy = mod_get_option('recy_limit');
-    if (mod_get_option('recy_limit') < 1) $required_recy = 1;
+    $required_recy = $mod_tools->mod_get_option('recy_limit');
+    if ($mod_tools->mod_get_option('recy_limit') < 1) $required_recy = 1;
 
     if ($nb_recycleurs > $required_recy) {
 
