@@ -13,6 +13,11 @@
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 global $db, $table_prefix;
+$mod_folder = "recycleurs";
+$mod_name = "recycleurs";
+update_mod($mod_folder, $mod_name);
+
+define("TABLE_XTENSE_CALLBACKS", $table_prefix . "xtense_callbacks");
 
 // Insertion de la liaison entre Xtense v2 et cdr
 // Quelle est l'ID du mod ?

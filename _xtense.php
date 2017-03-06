@@ -9,9 +9,6 @@
  *   modified    : -
  *   last modif. : created
  ***************************************************************************/
-
-namespace Ogsteam\Ogspy;
-
 if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 
 global $db, $table_prefix, $user, $xtense_version;

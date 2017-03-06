@@ -1,7 +1,4 @@
 <?php
-
-namespace Ogsteam\Ogspy;
-
 if (!defined('IN_SPYOGAME')) {
     die("Hacking attempt");
 }
