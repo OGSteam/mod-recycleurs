@@ -40,7 +40,7 @@ function add_recyclers($galaxie = "", $system = "", $position = "", $gate = "", 
     if($db->sql_numrows($db->sql_query($request)) != 0)
         $query = "UPDATE ".TABLE_RECYCLEURS." SET `nombrerecy`= '".$nb_recyclers."', `porte`= '".$gate."', `time` = '".time()."' WHERE `galaxie`= '".$galaxie."' AND `systeme`='".$system."' AND `position` = '".$position."'";
     else
-        $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '$galaxie', '$system', '$position', '$gate', '$nb_recyclers', " . time() . ")";
+        $query = "INSERT INTO " . TABLE_RECYCLEURS . "(`user_name` , `galaxie` , `systeme` , `position` , `porte` , `nombrerecy` , `time`) VALUES ('" . $user_data['user_name'] . "', '$galaxie', '$system', '$position', '$gate', '$nb_recyclers', " . time() . ")";
     $db->sql_query($query);
 
     if($xtense != true)

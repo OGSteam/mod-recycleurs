@@ -36,7 +36,7 @@ function add_phalanx($galaxie = "", $system = "", $position = "", $level = "", $
     if($db->sql_numrows($db->sql_query($request)) != 0)
         $query = "UPDATE ".TABLE_PHALANGES." SET `systemea`= '".$system_higher_range."', `systemep`= '".$system_lower_range."', `time` = '".time()."' WHERE `galaxie`= '".$galaxie."' AND `systeme`='".$system."' AND `position` = '".$position."'";
     else
-        $query = "INSERT INTO " . TABLE_PHALANGES . "(`id` , `user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('', '" . $user_data['user_name'] . "', '".$galaxie."', '".$system."', '".$position."', '".$system_higher_range."', '".$system_lower_range."', " . time() . ")";
+        $query = "INSERT INTO " . TABLE_PHALANGES . "(`user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('" . $user_data['user_name'] . "', '".$galaxie."', '".$system."', '".$position."', '".$system_higher_range."', '".$system_lower_range."', " . time() . ")";
 
     $db->sql_query($query);
     
