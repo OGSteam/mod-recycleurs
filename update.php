@@ -15,9 +15,18 @@ if (!defined('IN_SPYOGAME')) die("Hacking attempt");
 global $db, $table_prefix;
 $mod_folder = "recycleurs";
 $mod_name = "recycleurs";
-update_mod($mod_folder, $mod_name);
 
 define("TABLE_XTENSE_CALLBACKS", $table_prefix . "xtense_callbacks");
+define("TABLE_RECYCLEURS", $table_prefix . "recycleurs");
+define("TABLE_PHALANGES", $table_prefix . "phalanges");
+
+$result = $db->sql_query("SELECT `version` FROM ".TABLE_MOD." WHERE `title` = 'recycleurs'");
+list($version) = $db->sql_fetch_row($result);
+
+if(version_compare($version, '1.3.4', '<')){
+    $db->sql_query("ALTER TABLE `" . TABLE_RECYCLEURS . "` MODIFY `galaxie` VARCHAR(2)");
+    $db->sql_query("ALTER TABLE `" . TABLE_PHALANGES . "` MODIFY `galaxie` VARCHAR(2)");
+}
 
 // Insertion de la liaison entre Xtense v2 et cdr
 // Quelle est l'ID du mod ?
@@ -40,3 +49,5 @@ if ($db->sql_numrows($result) != 0) {
         $db->sql_query("INSERT INTO " . TABLE_XTENSE_CALLBACKS . " (mod_id, function, type, active) VALUES ('" . $mod_id . "', 'phalanx_import', 'buildings', '1')");
     }
 }
+
+update_mod($mod_folder, $mod_name);

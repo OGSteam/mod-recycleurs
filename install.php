@@ -31,7 +31,7 @@ if ($is_ok == true) {
     $query = "CREATE TABLE " . TABLE_RECYCLEURS . " (
 			`id` INT NOT NULL AUTO_INCREMENT ,
 			`user_name` VARCHAR( 255 ) NOT NULL default '0',
-			`galaxie` VARCHAR( 1 ) NOT NULL ,
+			`galaxie` VARCHAR( 2 ) NOT NULL ,
 			`systeme` VARCHAR( 3 ) NOT NULL ,
 			`position` VARCHAR( 2 ) NOT NULL ,
 			`porte` VARCHAR( 50 ) NOT NULL ,
@@ -44,7 +44,7 @@ if ($is_ok == true) {
     $query = "CREATE TABLE " . TABLE_PHALANGES . " (
 			`id` INT NOT NULL AUTO_INCREMENT ,
 			`user_name` VARCHAR( 255 ) NOT NULL default '0',
-			`galaxie` VARCHAR( 1 ) NOT NULL ,
+			`galaxie` VARCHAR( 2 ) NOT NULL ,
 			`systeme` VARCHAR( 3 ) NOT NULL ,
 			`position` VARCHAR( 2 ) NOT NULL ,
 			`systemea` VARCHAR( 3 ) NOT NULL ,
