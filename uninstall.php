@@ -1,6 +1,4 @@
 <?php
-namespace Ogsteam\Ogspy;
-
 if (!defined('IN_SPYOGAME')) {
     die("Hacking attempt");
 }
@@ -30,5 +28,6 @@ if ($db->sql_numrows($result) != 0) {
     }
 }
 
-$mod_uninstall_table = array( $table_prefix . "recycleurs" , $table_prefix . "phalanges");
-mod_remove_tables($mod_uninstall_table);
+$mod_uninstall_name = "recycleurs";
+$mod_uninstall_table = $table_prefix . "recycleurs" . ',' . $table_prefix . "phalanges";
+uninstall_mod($mod_uninstall_name, $mod_uninstall_table);

@@ -1,8 +1,4 @@
 <?php
-
-namespace Ogsteam\Ogspy;
-
-
 if (!defined('IN_SPYOGAME')) die ('Hacking attempt');
 
 list($version, $root) = $db->sql_fetch_row($db->sql_query("SELECT version, root FROM " . TABLE_MOD . " WHERE action = 'recycleurs'"));
