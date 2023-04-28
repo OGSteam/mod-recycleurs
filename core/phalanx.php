@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by IntelliJ IDEA.
  * User: Anthony
@@ -31,36 +32,34 @@ function add_phalanx($galaxie = "", $system = "", $position = "", $level = "", $
         $arrondi_type = 2;
     };
 
-    $request="SELECT * from ".TABLE_PHALANGES." WHERE `galaxie`=".$galaxie." AND systeme=".$system." AND position='".$position."'";
+    $request = "SELECT * from " . TABLE_PHALANGES . " WHERE `galaxie`=" . $galaxie . " AND systeme=" . $system . " AND position='" . $position . "'";
 
-    if($db->sql_numrows($db->sql_query($request)) != 0)
-        $query = "UPDATE ".TABLE_PHALANGES." SET `systemea`= '".$system_higher_range."', `systemep`= '".$system_lower_range."', `time` = '".time()."' WHERE `galaxie`= '".$galaxie."' AND `systeme`='".$system."' AND `position` = '".$position."'";
-    else
-        $query = "INSERT INTO " . TABLE_PHALANGES . "(`user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('" . $user_data['user_name'] . "', '".$galaxie."', '".$system."', '".$position."', '".$system_higher_range."', '".$system_lower_range."', " . time() . ")";
-
+    if ($db->sql_numrows($db->sql_query($request)) != 0) {
+        $query = "UPDATE " . TABLE_PHALANGES . " SET `systemea`= '" . $system_higher_range . "', `systemep`= '" . $system_lower_range . "', `time` = '" . time() . "' WHERE `galaxie`= '" . $galaxie . "' AND `systeme`='" . $system . "' AND `position` = '" . $position . "'";
+    } else {
+        $query = "INSERT INTO " . TABLE_PHALANGES . "(`user_name` , `galaxie` , `systeme` , `position` , `systemea` , `systemep` , `time`) VALUES ('" . $user_data['user_name'] . "', '" . $galaxie . "', '" . $system . "', '" . $position . "', '" . $system_higher_range . "', '" . $system_lower_range . "', " . time() . ")";
+    }
     $db->sql_query($query);
-    
-    if($xtense != true)
-        redirection("index.php?action=recycleurs&sub_action=phalanges");
 
+    if ($xtense != true)
+        redirection("index.php?action=recycleurs&sub_action=phalanges");
 }
 
-function del_phalanx($id = ""){
+function del_phalanx($id = "")
+{
     global $db, $table_prefix;
-    define("TABLE_PHALANGES", $table_prefix . "phalanges");    
-    
+
     // on écrit la requête sql
-    $query = "DELETE from " . TABLE_PHALANGES . " where id= '".$id."'";    
+    $query = "DELETE FROM " . $table_prefix . "phalanges" . " where id= '$id'";
     $db->sql_query($query);
-    
+
     redirection("index.php?action=recycleurs&sub_action=phalanges");
 }
 
 function reset_phalanx_table()
 {
     global $db, $table_prefix;
-    define("TABLE_PHALANGES", $table_prefix . "phalanges");
 
-    $query = "DELETE from " . TABLE_PHALANGES;
+    $query = "DELETE FROM " . $table_prefix . "phalanges";
     $db->sql_query($query);
 }

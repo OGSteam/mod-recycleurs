@@ -1,4 +1,5 @@
 <?php
+
 /**
  * update.php
  *
@@ -20,10 +21,10 @@ define("TABLE_XTENSE_CALLBACKS", $table_prefix . "xtense_callbacks");
 define("TABLE_RECYCLEURS", $table_prefix . "recycleurs");
 define("TABLE_PHALANGES", $table_prefix . "phalanges");
 
-$result = $db->sql_query("SELECT `version` FROM ".TABLE_MOD." WHERE `title` = 'recycleurs'");
+$result = $db->sql_query("SELECT `version` FROM " . TABLE_MOD . " WHERE `title` = 'recycleurs'");
 list($version) = $db->sql_fetch_row($result);
 
-if(version_compare($version, '1.3.4', '<')){
+if (version_compare($version, '1.3.4', '<')) {
     $db->sql_query("ALTER TABLE `" . TABLE_RECYCLEURS . "` MODIFY `galaxie` VARCHAR(2)");
     $db->sql_query("ALTER TABLE `" . TABLE_PHALANGES . "` MODIFY `galaxie` VARCHAR(2)");
 }
