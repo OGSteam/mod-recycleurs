@@ -57,15 +57,6 @@ include_once("views/page_header.php");
                                 echo "</th>";
                             }
                         }
-                        if ($pub_sub_action != 'version') {
-                            echo "\t\t\t" . "<td class='c' width='150' onclick=\"window.location = 'index.php?action=recycleurs&sub_action=version';\">";
-                            echo "<a style='cursor: pointer'><font color:'lime'>Version et Info</font></a>";
-                            echo "</td>";
-                        } else {
-                            echo "<th width='150'>";
-                            echo "<a>Version et Info</a>";
-                            echo "</th>";
-                        }
 
                         ?>
 
@@ -89,10 +80,6 @@ include_once("views/page_header.php");
                         require_once("admin.php");
                         break;
 
-                    case "version" :
-                        require_once("version.php");
-                        break;
-
                     case "add":
                         add_recyclers($pub_galaxie, $pub_systeme, $pub_position, $pub_porte ,$pub_nombrerecy);
                         break;
@@ -110,8 +97,7 @@ include_once("views/page_header.php");
                         break;
 
                     case "set_recy_limit";
-                        $mod_tools = new Mod_DevTools("recycleurs");
-                        $mod_tools->mod_set_option('recy_limit', $pub_low_limit);
+                        mod_set_option('recy_limit', $pub_low_limit);
                         redirection("index.php?action=recycleurs&sub_action=admin");
                         break;
                     case "raz";
