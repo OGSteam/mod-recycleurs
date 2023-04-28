@@ -79,6 +79,11 @@ function recycleurs_import($data)
     $isMoon = $data['planet_type'];
     $planet_name = $data['planet_name'];
     $coordinates = $player_galaxy . ":" . $player_system . ":" . $player_position;
+    
+    // On quitte si aucun recycleur trouvé dans la flotte
+    if (empty($data['fleet']['REC'])) {
+        return false;
+    }
     $nb_recycleurs = $data['fleet']['REC'];
 
     $required_recy = (new Mod_Config_Model)->get_mod_config('recycleurs', 'recy_limit');
