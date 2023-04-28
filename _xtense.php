@@ -67,7 +67,7 @@ if (class_exists("Callback")) {
  */
 function recycleurs_import($data)
 {
-    global $user_data, $db, $table_prefix;
+    global $db;
 
     // données a traiter
     // timestamp actuel
@@ -79,10 +79,17 @@ function recycleurs_import($data)
     $isMoon = $data['planet_type'];
     $planet_name = $data['planet_name'];
     $coordinates = $player_galaxy . ":" . $player_system . ":" . $player_position;
+    
+    // On quitte si aucun recycleur trouvé dans la flotte
+    if (empty($data['fleet']['REC'])) {
+        return false;
+    }
     $nb_recycleurs = $data['fleet']['REC'];
 
     $required_recy = (new Mod_Config_Model)->get_mod_config('recycleurs', 'recy_limit');
-    if ($required_recy < 1) $required_recy = 1;
+    if ($required_recy < 1) {
+        $required_recy = 1;
+    }
 
     if ($nb_recycleurs > $required_recy) {
 
@@ -105,8 +112,9 @@ function phalanx_import($data)
     if (isset($data['buildings']['Pha'])) {
         $lvl_phalange = $data['buildings']['Pha'];
 
-        if ($lvl_phalange > 0)
+        if ($lvl_phalange > 0) {
             add_phalanx($player_galaxy, $player_system, $player_position, $lvl_phalange, true);
+        }
     }
     return true;
 }

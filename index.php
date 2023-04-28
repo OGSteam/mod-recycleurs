@@ -110,7 +110,8 @@ include_once("views/page_header.php");
                         break;
 
                     case "set_recy_limit";
-                        mod_set_option('recy_limit', $pub_low_limit);
+                        $mod_tools = new Mod_DevTools("recycleurs");
+                        $mod_tools->mod_set_option('recy_limit', $pub_low_limit);
                         redirection("index.php?action=recycleurs&sub_action=admin");
                         break;
                     case "raz";

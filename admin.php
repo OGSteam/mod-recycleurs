@@ -6,6 +6,9 @@ if (!defined('IN_SPYOGAME')) {
 if ($user_data["user_admin"] != 1 && $user_data["user_coadmin"] != 1) {
     redirection("index.php?action=message&id_message=forbidden&info");
 }
+
+$mod_tools = new Mod_DevTools('recycleurs');
+
 ?>
 <form method="POST" action="index.php?action=recycleurs&sub_action=set_recy_limit">
     <table align="center">
@@ -16,7 +19,7 @@ if ($user_data["user_admin"] != 1 && $user_data["user_coadmin"] != 1) {
                     <td align="center" class="c" colspan="2">Flotte minimale de recycleurs à afficher</td>
                     <tr>
                         <th align="center">
-                            Nombre: <input type="text" name="low_limit" value="<?php echo mod_get_option('recy_limit');?>"><br>
+                            Nombre: <input type="text" name="low_limit" value="<?php echo $mod_tools->mod_get_option('recy_limit');?>"><br>
                     </tr>
                     <th align="center" colspan="2">
                         <input type="submit" value="Envoi">
