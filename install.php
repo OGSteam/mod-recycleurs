@@ -6,7 +6,7 @@
  * @author deusirae
  * @package recycleurs
  * @version 1.0a
- * @link http://ogsteam.fr
+ * @link https://ogsteam.eu
  **/
 
 //L'appel direct est interdit
